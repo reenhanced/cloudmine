@@ -36,7 +36,7 @@ module Cloudmine
       end
     end
     
-    private
+    protected
       def api_call(method, url, body = nil, options={})
         options[:headers] ||= {}
         options[:headers]["X-CloudMine-ApiKey"] = api_key
@@ -45,10 +45,16 @@ module Cloudmine
         options[:body] ||= body.to_json
 
         response = self.class.send(method, url, options)
-        begin; response_body = JSON.parse(response.body); rescue; response_body = response.body ;end
+        begin
+          response_body = JSON.parse(response.body)
+        rescue
+          response_body = response.body
+        end
+
         if response.code != 200
           raise "Error from Cloudmine API: #{response_body["errors"].join(", ")} (code #{response.code})"
         end
+
         response_body["success"]
       end
       
