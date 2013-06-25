@@ -51,11 +51,11 @@ module Cloudmine
           response_body = response.body
         end
 
-        if response.code != 200
+        unless (200..299).include? response.code
           raise "Error from Cloudmine API: #{response_body["errors"].join(", ")} (code #{response.code})"
         end
 
-        response_body["success"]
+        response_body
       end
       
       def api_url(endpoint)

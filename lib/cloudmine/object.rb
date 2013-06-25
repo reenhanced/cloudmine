@@ -1,7 +1,7 @@
 module Cloudmine
   class Object < Base
     def fetch(*keys)
-      api_call(:get, "#{api_url('text')}?keys=#{keys.flatten.join(',')}")
+      api_call(:get, "#{api_url('text')}?keys=#{keys.flatten.join(',')}")["success"]
     end
 
     def update(key, value, options = {})
