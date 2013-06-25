@@ -24,7 +24,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Assign your credentials:
+
+    Cloudmine.api_key = "my api key"
+    Cloudmine.app_id  = "my app id"
+
+# Objects
+
+Create an object:
+
+    Cloudmine::Object.create('key', { "field" => 'value' })
+
+Fetch an object:
+
+    object = Cloudmine::Object.fetch('key')
+
+Update an object:
+
+    Cloudmine::Object.update('key', 'new value')
+
+Destroy an object:
+
+    Cloudmine::Object.destroy('key')
 
 ## Contributing
 
