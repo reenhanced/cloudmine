@@ -47,7 +47,7 @@ module Cloudmine
         response = self.class.send(method, url, options)
         begin
           response_body = JSON.parse(response.body)
-        rescue
+        rescue JSON::ParserError
           response_body = response.body
         end
 
