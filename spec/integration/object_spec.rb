@@ -27,4 +27,21 @@ describe Cloudmine::Object do
       request.should have_been_requested
     end
   end
+
+  describe "#destroy" do
+    let(:response_body) { { "success" => { "key1" => "deleted", "key2" => "deleted" } }.to_json }
+    let!(:request) {
+      WebMock.stub_request(:delete, "https://api.cloudmine.me/v1/app/#{app_id}/text?keys=key1,key2").with(headers: { "X-CloudMine-ApiKey" => api_key,
+                                                                                                   "Content-Type" => "application/json" })
+                                                                                  .to_return(body:    response_body,
+                                                                                             status:  200,
+                                                                                             headers: { "Content-Type" => "application/json" })
+    }
+
+    it "issues a delete request to Cloudmine" do
+      Cloudmine::Object.destroy(["key1", "key2"])
+
+      request.should have_been_requested
+    end
+  end
 end
