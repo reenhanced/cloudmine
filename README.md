@@ -1,4 +1,4 @@
-cloudmine-ruby
+cloudmine
 ==============
 
 [CloudMine](https://cloudmine.me) is a backend-as-a-service platform for
@@ -12,7 +12,7 @@ This is a Ruby gem for interacting with the CloudMine API.
 
 Add this line to your application's Gemfile:
 
-    gem 'cloudmine-ruby'
+    gem 'cloudmine'
 
 And then execute:
 
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cloudmine-ruby
+    $ gem install cloudmine
 
 ## Usage
 
