@@ -1,4 +1,4 @@
-cloudmine-ruby
+cloudmine
 ==============
 
 [CloudMine](https://cloudmine.me) is a backend-as-a-service platform for
@@ -12,7 +12,7 @@ This is a Ruby gem for interacting with the CloudMine API.
 
 Add this line to your application's Gemfile:
 
-    gem 'cloudmine-ruby'
+    gem 'cloudmine'
 
 And then execute:
 
@@ -20,11 +20,32 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cloudmine-ruby
+    $ gem install cloudmine
 
 ## Usage
 
-TODO: Write usage instructions here
+Assign your credentials:
+
+    Cloudmine.api_key = "my api key"
+    Cloudmine.app_id  = "my app id"
+
+# Objects
+
+Create an object:
+
+    Cloudmine::Object.create('key', { "field" => 'value' })
+
+Fetch an object:
+
+    object = Cloudmine::Object.fetch('key')
+
+Update an object:
+
+    Cloudmine::Object.update('key', 'new value')
+
+Destroy an object:
+
+    Cloudmine::Object.destroy('key')
 
 ## Contributing
 
