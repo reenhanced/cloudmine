@@ -13,7 +13,7 @@ module Cloudmine
     end
 
     def destroy(*keys)
-      api_call(:delete, "#{api_url('text')}?keys=#{keys.flatten.join(',')}")
+      api_call(:delete, "#{api_url('data')}?keys=#{keys.flatten.join(',')}")
     end
   end
 end

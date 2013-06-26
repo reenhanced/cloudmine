@@ -31,7 +31,7 @@ describe Cloudmine::Object do
   describe "#destroy" do
     let(:response_body) { { "success" => { "key1" => "deleted", "key2" => "deleted" } }.to_json }
     let!(:request) {
-      WebMock.stub_request(:delete, "https://api.cloudmine.me/v1/app/#{app_id}/text?keys=key1,key2").with(headers: { "X-CloudMine-ApiKey" => api_key,
+      WebMock.stub_request(:delete, "https://api.cloudmine.me/v1/app/#{app_id}/data?keys=key1,key2").with(headers: { "X-CloudMine-ApiKey" => api_key,
                                                                                                    "Content-Type" => "application/json" })
                                                                                   .to_return(body:    response_body,
                                                                                              status:  200,
