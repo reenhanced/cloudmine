@@ -37,12 +37,12 @@ module Cloudmine
     end
     
     protected
-      def api_call(method, endpoint, body = nil, options={})
+      def api_call(method, endpoint, options={})
         options[:headers] ||= {}
         options[:headers]["X-CloudMine-ApiKey"] = api_key
         options[:headers]["Content-Type"]       = "application/json"
 
-        options[:body] ||= body.to_json
+        options[:body] = options[:body].to_json if options[:body]
 
         response = self.class.send(method, api_url(endpoint), options)
         begin
