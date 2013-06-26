@@ -37,14 +37,14 @@ module Cloudmine
     end
     
     protected
-      def api_call(method, url, body = nil, options={})
+      def api_call(method, endpoint, body = nil, options={})
         options[:headers] ||= {}
         options[:headers]["X-CloudMine-ApiKey"] = api_key
         options[:headers]["Content-Type"]       = "application/json"
 
         options[:body] ||= body.to_json
 
-        response = self.class.send(method, url, options)
+        response = self.class.send(method, api_url(endpoint), options)
         begin
           response_body = JSON.parse(response.body)
         rescue JSON::ParserError
